@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { CircularProgress } from "@material-ui/core";
-import SideNav from "../AllPages/SideNav/SideNav";
 import Selector from "../Common/Selector";
 import { Device } from "../../Models/device";
 import {
@@ -34,6 +33,10 @@ const useStyles = makeStyles((theme: any) => ({
     backgroundColor: "white",
     width: "100%",
     flexDirection: "column",
+    maxWidth: 1446,
+    "@media only screen and (min-width: 1532px)": {
+      paddingLeft: 80,
+    },
   },
   title: {
     fontSize: 32,
@@ -44,6 +47,7 @@ const useStyles = makeStyles((theme: any) => ({
   filterSelectors: {
     display: "flex",
     justifyContent: "space-evenly",
+    flexFlow: "wrap",
   },
   topUI: {
     display: "flex",
@@ -57,7 +61,7 @@ const useStyles = makeStyles((theme: any) => ({
   },
   resetBtn: {
     color: "white",
-    backgroundColor: "#4c68d6",
+    backgroundColor: theme.palette.layers.theme,
     fontFamily: theme.typography.fontFamily.primary,
     fontWeight: "bold",
     cursor: "pointer",
@@ -78,7 +82,7 @@ const useStyles = makeStyles((theme: any) => ({
     height: "65px !important",
     alignSelf: "center",
     marginTop: 100,
-    color: "#4c68d642",
+    color: theme.palette.layers.lighterTheme,
   },
 }));
 
@@ -187,7 +191,6 @@ export default function DashBoard() {
 
   return (
     <>
-      <SideNav />
       <div className={classes.root}>
         <div className={classes.topUI}>
           <div className={classes.title}>Dashboard</div>
@@ -217,7 +220,6 @@ export default function DashBoard() {
         ) : (
           <ResponsiveContainer
             className={classes.chartWrapper}
-            width="90%"
             height={700}
             aspect={3}
           >
@@ -240,7 +242,6 @@ export default function DashBoard() {
                     : (unixTime) => moment(unixTime).format("hh:mm a")
                 }
                 // label="Time"
-                // angle={-45}
               />
               <YAxis
                 type="number"

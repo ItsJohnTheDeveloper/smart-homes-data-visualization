@@ -21,7 +21,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   selectorStyle: {
     color: theme.palette.text.primary,
   },
-  loadingIcon: {},
+  loadingIconWrapper: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  loadingIcon: {
+    color: theme.palette.text.theme,
+  },
 }));
 
 interface SelectorProps {
@@ -81,7 +87,9 @@ export default function Selector({
           onChange={handleChange}
         >
           {loading ? (
-            <CircularProgress className={classes.loadingIcon} />
+            <div className={classes.loadingIconWrapper}>
+              <CircularProgress className={classes.loadingIcon} />
+            </div>
           ) : (
             list.map((item: any) => {
               return (

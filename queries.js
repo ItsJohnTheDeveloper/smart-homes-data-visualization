@@ -13,28 +13,37 @@ const pool = new Pool(config);
 const limit = 1440;
 
 const fetchAsync = async (req, res, query) => {
+  const client = await pool.connect();
   let data = null;
   console.info(`${req.method} ${req.url}`);
+
   try {
-    data = await pool.query(query);
-    return res.status(200).json(data.rows);
-  } catch (err) {
-    console.info(err);
-    console.info("An error occured hitting " + req.originalUrl);
-    res.status(404);
-    res.end();
-    return;
+    //transactions
+    await client.query("BEGIN");
+    try {
+      data = await client.query(query);
+      await client.query("COMMIT");
+      return res.status(201).json(data.rows);
+    } catch (err) {
+      await client.query("ROLLBACK");
+      console.info(err);
+      console.info("An error occured hitting " + req.originalUrl);
+      res.status(404).res.end();
+      throw err;
+    }
+  } finally {
+    client.release();
   }
 };
 
 const getDevices = async (req, res) => {
-  const query = "SELECT * FROM readings";
+  const query = `SELECT * FROM readings`;
   return await fetchAsync(req, res, query);
 };
 
 const getDevicesBySN = async (req, res) => {
   let { sn } = req.params;
-  const query = `SELECT * FROM readings WHERE "Serial_Number" = '${sn}'`;
+  const query = `SELECT * FROM readings WHERE "Serial_Number" = '${sn}' LIMIT ${limit}`;
   return await fetchAsync(req, res, query);
 };
 
@@ -58,6 +67,7 @@ const getUniqueDevicesIds = async (req, res) => {
 
 const getMainDevicesBySN = async (req, res) => {
   const { sn } = req.params;
+  // For efficiency I could grab just datetime, and wattage but I dont think it really matters.
   const query = `SELECT * FROM readings WHERE "Device_ID" = 'mains' AND "Serial_Number" = '${sn}' LIMIT ${limit}`;
   return await fetchAsync(req, res, query);
 };

@@ -1,11 +1,9 @@
 import { makeStyles } from "@material-ui/core";
+import NavBar from "../NavBar/NavBar";
 
 const useStyles = makeStyles((theme: any) => ({
   pageContainer: {
     backgroundColor: theme.palette.layers.background,
-    display: "flex",
-    height: "100%",
-    minHeight: "100vh",
   },
 }));
 
@@ -16,5 +14,10 @@ interface PageWrapperProps {
 export default function PageWrapper({ children }: PageWrapperProps) {
   const classes = useStyles();
 
-  return <div className={classes.pageContainer}>{children}</div>;
+  return (
+    <div className={classes.pageContainer}>
+      <NavBar />
+      {children}
+    </div>
+  );
 }
