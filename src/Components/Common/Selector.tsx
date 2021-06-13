@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   FormControl,
   MenuItem,
@@ -10,7 +10,7 @@ import {
 
 import { useState } from "react";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme: any) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
