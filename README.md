@@ -14,6 +14,8 @@ To start the React application
 
 `npm run start`
 
+Apps is now running on `http://localhost:3000`
+
 ## Creating a Production Build
 
 Create a build directory and run it
@@ -23,10 +25,6 @@ Create a build directory and run it
 `npm run serve`
 
 Apps is now running on `http://localhost:5000`
-
-Ports:
-`npm run start` will run on port 4000
-`npm run build` will run on port 5000
 
 ## Starting the Express server (Port 4000)
 
