@@ -23,8 +23,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "server.ts",
-    "queries.ts"
+    "**/*.tsx"
   ]
 }

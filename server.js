@@ -1,3 +1,6 @@
+/**
+ * This file was originally written in ts but I ran into issues running the server
+ */
 const express = require("express");
 const app = express();
 const db = require("./queries");

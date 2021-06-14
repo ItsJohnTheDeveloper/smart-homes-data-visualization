@@ -1,3 +1,6 @@
+/**
+ * This file was also written in ts
+ */
 const { Pool } = require("pg");
 
 const config = {

@@ -4,25 +4,17 @@ Coding Challenge
 
 ## Setup
 
-First install dependenciess
+First install dependencies
 
 `npm i`
 
-## Developing Locally in dev mode
+## Creating a Development Build
 
-First pull in a copy of the environment variables from GitHub
-
-`figure out github secrets`
-
-Next, run the app
+To start the React application
 
 `npm run start`
 
-## Creating a build locally
-
-Ports listed:
--3000 `npm run start`
--5000 `npm run build`
+## Creating a Production Build
 
 Create a build directory and run it
 
@@ -30,8 +22,18 @@ Create a build directory and run it
 
 `npm run serve`
 
+Apps is now running on `http://localhost:5000`
+
+Ports:
+`npm run start` will run on port 4000
+`npm run build` will run on port 5000
+
 ## Starting the Express server (Port 4000)
 
-To start the express server run the following and your good to go
+To start the express server:
 
 `node server.js`
+
+Also use nodemon, make changes to the server and have it restart automatically:
+
+`nodemon server.js`

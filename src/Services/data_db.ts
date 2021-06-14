@@ -1,5 +1,4 @@
 import axios from "axios";
-import { DeviceDocument } from "../Models/device";
 
 const url = "http://localhost:4000";
 axios.defaults.baseURL = url;

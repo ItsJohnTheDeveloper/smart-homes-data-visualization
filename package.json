@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/express": "^4.17.12"
+    "@types/express": "^4.17.12",
+    "@types/pg": "^8.6.0"
   }
 }
