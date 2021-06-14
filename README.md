@@ -8,6 +8,10 @@ First install dependencies
 
 `npm i`
 
+## PLEASE NOTE: Postgresql Password needs to be set inside 'queries.js' file
+
+on line 8
+
 ## Creating a Development Build
 
 To start the React application

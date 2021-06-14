@@ -5,7 +5,7 @@ const { Pool } = require("pg");
 
 const config = {
   user: "smarthomesdashboarduser@smarthomes",
-  password: "b5zT;q_fS\\aAUtpD",
+  password: "",
   host: "smarthomes.postgres.database.azure.com",
   database: "wattage",
   port: 5432,
